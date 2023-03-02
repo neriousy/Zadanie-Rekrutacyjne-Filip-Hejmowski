@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zadanie rekrutacyjne - Filip Hejmowski</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="lib/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <main>
+    <h4>WARTOŚĆ</h4>
+
+    <table ng-controller="mainController">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th> <button class="actionButton add" ng-click="addRow()"><i class="fa-solid fa-plus"></i></button> </th>
+          <th>Wartość netto</th>
+          <th>Stawka VAT</th>
+          <th>Wartość VAT</th>
+          <th>Wartość brutto</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="value in values">
+          <td>{{$index + 1}}.</td>
+          <td><button class="actionButton minus" ng-click="removeRow(value)"><i class="fa-solid fa-minus"></i></button></td>
+          <td><input type="text" name="netto" id="netto" ng-model="value.netto" ng-click="removeZero()" ng-blur="addZero()" ng-change="calculate()" class="input"></td>
+          <td>
+            <select ng-change="calculate()" ng-model="value.vatRate" ng-init="value.vatRate = '23'">
+              <option value="0">0</option>
+              <option value="7">7</option>
+              <option selected value="23">23</option>
+            </select>
+          </td>
+          <td><input type="text" name="vatValue" id="vatValue" ng-value="value.vatValue" class="input" disabled></td>
+          <td><input type="text" name="vatValue" id="vatValue" ng-value="value.brutto" class="input" disabled></td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>{{summary.nettoSum}} PLN</td>
+          <td></td>
+          <td>{{summary.vatValueSum}} PLN</td>
+          <td>{{summary.bruttoSum}} PLN</td>
+        </tr>
+      </tfoot>
+    </table>
+  </main>
+</body>
+</html>
