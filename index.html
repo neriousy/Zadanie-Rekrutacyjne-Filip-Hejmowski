@@ -33,7 +33,7 @@
         <tr ng-repeat="value in values">
           <td>{{$index + 1}}.</td>
           <td><button class="actionButton minus" ng-click="removeRow(value)"><i class="fa-solid fa-minus"></i></button></td>
-          <td><input type="text" name="netto" id="netto" ng-model="value.netto" ng-click="removeZero()" ng-blur="addZero()" ng-change="calculate()" class="input"></td>
+          <td><input type="number" name="netto" id="netto" ng-model="value.netto" ng-click="removeZero()" ng-blur="addZero()" ng-change="calculate()" class="input"></td>
           <td>
             <select ng-change="calculate()" ng-model="value.vatRate" ng-init="value.vatRate = '23'">
               <option value="0">0</option>
@@ -41,8 +41,8 @@
               <option selected value="23">23</option>
             </select>
           </td>
-          <td><input type="text" name="vatValue" id="vatValue" ng-value="value.vatValue" class="input" disabled></td>
-          <td><input type="text" name="vatValue" id="vatValue" ng-value="value.brutto" class="input" disabled></td>
+          <td><input type="number" name="vatValue" id="vatValue" ng-value="value.vatValue" class="input" disabled></td>
+          <td><input type="number" name="vatValue" id="vatValue" ng-value="value.brutto" class="input" disabled></td>
         </tr>
       </tbody>
 
