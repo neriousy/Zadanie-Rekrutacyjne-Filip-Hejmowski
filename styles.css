@@ -132,3 +132,13 @@ tfoot tr {
   border-bottom: 1px solid #c9c9c9;
   line-height: 2em;
 }
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
